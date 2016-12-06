@@ -57,7 +57,7 @@ func Create_User_Message(user *User, data []byte) Message {
 		Join_Server(user)
 		m = Create_Message(login_success, Int_Converter(id))
 		Send_Message(user, m)
-		user.status = uint(online);
+		user.status = uint(online)
 		m = Create_Message(recieve_status, Int_Converter(user.id), byte(user.status), byte(user.muted), byte(user.voice))
 		Send_Broadcast_Server(user.serverid, m)
 	} else {
@@ -80,7 +80,7 @@ func Login_Message(user *User, data []byte) Message {
 		user.logged_in = true;
 		m = Create_Message(login_success, Int_Converter(id))
 		Send_Message(user, m)
-		user.status = uint(online);
+		user.status = uint(online)
 		m = Create_Message(recieve_status, Int_Converter(user.id), byte(user.status), byte(user.muted), byte(user.voice))
 		Send_Broadcast_Server(user.serverid, m)
 	} else {
@@ -248,7 +248,7 @@ func Location_Message(user *User, data []byte) Message {
 	if request != nil{
 		m = Create_Message(recieve_location, Int_Converter(request.serverid), Int_Converter(request.roomid), Int_Converter(request.id))
 	} else {
-		m = Create_Message(error_check, []byte("Cannot Request locations of user who is not logged it"))
+		m = Create_Message(error_check, []byte("Failed to retrieve location: user may not be logged in"))
 	}
 	Send_Message(user, m)
 	return m
@@ -258,7 +258,7 @@ func Location_Message(user *User, data []byte) Message {
 func User_Ip_Message(user *User, data []byte) Message {
 	m := Create_Message(request_user_ip, data[1:5])
 	u := Get_User_From_Userid(Byte_Converter(m.userid))
-	if u == nil{
+	if u == nil {
 		m = Create_Message(error_check, []byte("Failed to retrieve ip from user that is not logged in"))
 		Send_Message(user, m)
 	} else {

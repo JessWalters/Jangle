@@ -57,6 +57,7 @@ public class messageThread implements Runnable {
                     //Removes loading screen if active and thread is silent for 1 second.
                     if (loadingOn && System.currentTimeMillis() - lastMessageTime > 1500){
                         ui.finishedLoading();
+                        ui.stopLoadingMessages();
                         loadingOn = false;
                     }
 
@@ -145,5 +146,10 @@ public class messageThread implements Runnable {
     public void stopThread() {
         done = true;
         //t.interrupt();
+    }
+
+    public void setLoadingOn(boolean b) {
+        this.loadingOn = b;
+        this.lastMessageTime = System.currentTimeMillis();
     }
 }

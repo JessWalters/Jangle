@@ -80,6 +80,12 @@ public class FXMLController implements Initializable {
     private AnchorPane loadingPane;
     @FXML
     private ImageView loadingImage;
+    @FXML
+    private ImageView messageLoadingGif;
+    @FXML
+    private Label messageLoadingLabel;
+    @FXML
+    private AnchorPane messageLoadingPane;
 
 
     @FXML
@@ -341,6 +347,8 @@ public class FXMLController implements Initializable {
                     if (mClient.getMessages(mClient.getCurrentServerID(), mClient.getCurrentChannelID()).size() == 0) {
                         try {
                             mClientParseData.request50MessagesWithOffset(0);
+                            showLoadingMessageArea();
+                            mMessageThread.setLoadingOn(true);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -484,6 +492,19 @@ public class FXMLController implements Initializable {
         loadingImage.setVisible(false);
         loadingLabel.setVisible(false);
         loadingPane.setVisible(false);
+        messageArea.scrollTo(mClient.getMessages().size());
+    }
+
+    public void showLoadingMessageArea() {
+        messageLoadingGif.setVisible(true);
+        messageLoadingLabel.setVisible(true);
+        messageLoadingPane.setVisible(true);
+    }
+
+    public void stopLoadingMessages() {
+        messageLoadingPane.setVisible(false);
+        messageLoadingLabel.setVisible(false);
+        messageLoadingGif.setVisible(false);
     }
 
     public void refresh() {

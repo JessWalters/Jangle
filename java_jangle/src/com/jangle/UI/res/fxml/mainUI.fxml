@@ -67,6 +67,20 @@
                                                          </effect>
                                                       </ImageView>
                                                       <ListView fx:id="messageArea" prefHeight="474.0" prefWidth="667.0" stylesheets="@../css/messageArea.css" />
+                                                      <AnchorPane fx:id="messageLoadingPane" layoutY="-5.0" prefHeight="482.0" prefWidth="665.0" style="-fx-background-color: #18191b;" visible="false">
+                                                         <children>
+                                                            <ImageView fx:id="messageLoadingGif" fitHeight="482.0" fitWidth="739.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                               <image>
+                                                                  <Image url="@../img/loading.gif" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <Label fx:id="messageLoadingLabel" layoutX="250.0" layoutY="326.0" text="Loading" textFill="WHITE" visible="false">
+                                                               <font>
+                                                                  <Font size="40.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

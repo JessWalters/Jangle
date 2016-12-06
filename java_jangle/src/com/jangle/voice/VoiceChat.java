@@ -108,17 +108,11 @@ public class VoiceChat implements Runnable {
 	public void disconnectFromVoice() {
 		stopRecieve();
 		connections.clear();
-		stopSpeakers();
-
-		if (Cl.getBroadcastStatus()) {
-			endBrodcast();
-		}
+		endBrodcast();
 		Cl.setConnectedToVocie(false);
 		Parser.sendUserStatusChange();
-		try {
-			Recieving.setReceiveBufferSize(1);
-		} catch (SocketException e) {
-		}
+		
+		System.out.println("end spekers");
 	}
 
 	/**
@@ -160,8 +154,9 @@ public class VoiceChat implements Runnable {
 	 * Stop playing to the speakers.
 	 */
 	private void stopSpeakers() {
-		speakers.drain();
 		speakers.close();
+		speakers.drain();
+		
 	}
 
 	private void recieveData() {
@@ -230,6 +225,11 @@ public class VoiceChat implements Runnable {
 			speakers.write(toSpeaker, 0, toSpeaker.length);
 
 		}
+		try {
+			Recieving.setReceiveBufferSize(1);
+		} catch (SocketException e) {
+		}
+		stopSpeakers();
 	}
 
 }

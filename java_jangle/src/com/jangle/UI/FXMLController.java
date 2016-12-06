@@ -251,6 +251,7 @@ public class FXMLController implements Initializable {
                         //setTextAlignment(TextAlignment.LEFT);
                     }
                     else if (message.isYoutube() && message.isPlaying()){
+                        message.generateWebView();
                         setGraphic(message.getWebView());
                         setContentDisplay(ContentDisplay.BOTTOM);
                         setAlignment(Pos.CENTER_LEFT);
@@ -329,6 +330,7 @@ public class FXMLController implements Initializable {
                     }
                     for (Message m: mClient.getMessages()) {
                         m.setPlaying(false);
+                        m.destroyWebView();
                     }
                     messageArea.refresh();
                     mClient.changeChannel(userList.getSelectionModel().getSelectedItem().getId()-1000);

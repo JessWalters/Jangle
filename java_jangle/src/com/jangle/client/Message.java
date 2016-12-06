@@ -115,8 +115,6 @@ public class Message {
                 @Override
                 public void run() {
                     mWebView = new WebView();
-                    mWebView.getEngine().load(urls[0] + "&autoplay=0");
-                    mWebView.setPrefSize(512, 288);
                 }
             });
             String[] ids = urls[0].split("=");
@@ -262,5 +260,16 @@ public class Message {
 
     public void setPlaying(boolean playing) {
         isPlaying = playing;
+    }
+
+    public void generateWebView() {
+        String[] urls = messageContent.split(" ");
+        mWebView.getEngine().load(urls[0]);
+        mWebView.setPrefSize(512, 288);
+    }
+
+    public void destroyWebView() {
+        if (mWebView != null)
+            mWebView.getEngine().load(null);
     }
 }

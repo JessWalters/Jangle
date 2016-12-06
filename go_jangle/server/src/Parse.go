@@ -248,7 +248,7 @@ func Location_Message(user *User, data []byte) Message {
 	if request != nil{
 		m = Create_Message(recieve_location, Int_Converter(request.serverid), Int_Converter(request.roomid), Int_Converter(request.id))
 	} else {
-		m = Create_Message(error_check, []byte("Cannot Request locations of user who is not logged it"))
+		m = Create_Message(error_check, []byte("Failed to retrieve location: user may not be logged in"))
 	}
 	Send_Message(user, m)
 	return m

@@ -63,9 +63,10 @@ func Switcher(s string) byte {
 
 //Kicks the user from the server
 func Kick_User(args []string) {
+	u := Get_User_From_Userid(Byte_Converter([]byte(args[1])))
 	c := Kick{
-		user:       Get_User_From_Userid(Byte_Converter([]byte(args[1]))),
-		old_server: Get_User_From_Userid(Byte_Converter([]byte(args[1]))).serverid}
+		user:       u,
+		old_server: u.serverid}
 	c.Execute()
 	c.Send()
 }

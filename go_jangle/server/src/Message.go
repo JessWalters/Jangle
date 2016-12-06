@@ -235,8 +235,8 @@ func Roomid_Userid(args ...interface{}) Message {
 
 //TODO
 func Server_Display_Name(args ...interface{}) Message {
-	m := Message {
-		code: args[0].(byte),
+	m := Message{
+		code:                args[0].(byte),
 		server_display_name: args[1].([]byte)}
 	return m
 }
@@ -252,8 +252,8 @@ func Serverid_Server_Display_Name(args ...interface{}) Message {
 
 //TODO
 func Room_Display_Name(args ...interface{}) Message {
-	m := Message {
-		code: args[0].(byte),
+	m := Message{
+		code:              args[0].(byte),
 		room_display_name: args[1].([]byte)}
 	return m
 }

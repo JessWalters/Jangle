@@ -148,7 +148,9 @@ public class loginController implements Initializable {
     }
 
     public void setRememberedUsername() {
-        if (mConfigUtil.getUserName() != null)
+        if (mConfigUtil.getUserName() != null) {
             usernameField.setText(mConfigUtil.getUserName());
+            rememberUsername.setSelected(true);
+        }
     }
 }

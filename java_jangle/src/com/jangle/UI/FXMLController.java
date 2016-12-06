@@ -305,12 +305,15 @@ public class FXMLController implements Initializable {
                     }
                 }
                 else if(messageArea.getSelectionModel().getSelectedItem().isYoutube() && Desktop.isDesktopSupported() && messageArea.getSelectionModel().getSelectedItem().isPlaying()){
-                    try {
-                        Desktop.getDesktop().browse(new URI(messageArea.getSelectionModel().getSelectedItem().getMessageContent()));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
+                    //double click to open in browser
+                    if(event.getClickCount() == 2) {
+                        try {
+                            Desktop.getDesktop().browse(new URI(messageArea.getSelectionModel().getSelectedItem().getMessageContent()));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (URISyntaxException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 else if (messageArea.getSelectionModel().getSelectedItem().isYoutube() && !messageArea.getSelectionModel().getSelectedItem().isPlaying()){

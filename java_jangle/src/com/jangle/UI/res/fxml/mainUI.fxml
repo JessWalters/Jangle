@@ -17,7 +17,7 @@
                   <ListView fx:id="serverList" layoutX="-2.0" layoutY="-8.0" orientation="HORIZONTAL" prefHeight="84.0" prefWidth="900.0" stylesheets="@../css/serverList.css" />
                   <Label prefHeight="17.0" prefWidth="97.0" text="Jangle" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="14.0" />
+                        <Font name="Comic Sans MS" size="25.0" />
                      </font>
                   </Label>
                </children>

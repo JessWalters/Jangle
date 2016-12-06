@@ -133,7 +133,7 @@ public class FXMLController implements Initializable {
                     Map uploadResult = cloudinary.uploader().upload(attachment, ObjectUtils.emptyMap());
                     String uploadURL = (String) uploadResult.get("url");
                     System.out.print(uploadURL);
-                    mClientParseData.sendMessage(new Message(mClient.getUserID(), uploadURL, 1, 1));
+                    mClientParseData.sendMessage(new Message(mClient.getUserID(), uploadURL, mClient.getCurrentServerID(), mClient.getCurrentChannelID()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -344,7 +344,6 @@ public class FXMLController implements Initializable {
                     messageArea.refresh();
                     mClient.changeChannel(userList.getSelectionModel().getSelectedItem().getId()-1000);
                     mClientParseData.changeLocation();
-                    if (mClient.getMessages(mClient.getCurrentServerID(), mClient.getCurrentChannelID()).size() == 0) {
                         try {
                             mClientParseData.request50MessagesWithOffset(0);
                             showLoadingMessageArea();
@@ -352,7 +351,7 @@ public class FXMLController implements Initializable {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }
+
                     //Change the messages to the ones in the current channel
                     updateMessages(FXCollections.observableArrayList(mClient.getMessages(mClient.getCurrentServerID(), mClient.getCurrentChannelID())));
                     updateUsers(FXCollections.observableList(mClient.getUsers()));

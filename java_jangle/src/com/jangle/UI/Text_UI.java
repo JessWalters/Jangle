@@ -121,6 +121,8 @@ public class Text_UI extends Application {
                 System.exit(0);
             }
         });
+
+
     }
 
 }

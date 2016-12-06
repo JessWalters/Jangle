@@ -350,7 +350,7 @@ public class FXMLController implements Initializable {
         userList.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.SPACE && !mClient.getPushToTalk()) {
                     System.out.println("Key pressed");
                     mClient.setPushToTalk(true);
                 }
@@ -359,7 +359,7 @@ public class FXMLController implements Initializable {
         userList.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE) {
+                if (event.getCode() == KeyCode.SPACE && mClient.getPushToTalk()) {
                     mClient.setPushToTalk(false);
                     System.out.println("Key released");
                 }

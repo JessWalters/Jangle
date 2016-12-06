@@ -149,6 +149,14 @@ public class VoiceBroadcast implements Runnable {
 				}
 			}
 
+			else {
+				try {
+					Thread.sleep(VoiceUtil.SLEEP_MILLI_LENGTH);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}

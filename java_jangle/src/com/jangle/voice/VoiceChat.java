@@ -108,7 +108,7 @@ public class VoiceChat implements Runnable {
 	public void disconnectFromVoice() {
 		stopRecieve();
 		connections.clear();
-		stopSpeakers();
+		
 
 		if (Cl.getBroadcastStatus()) {
 			endBrodcast();
@@ -119,6 +119,7 @@ public class VoiceChat implements Runnable {
 			Recieving.setReceiveBufferSize(1);
 		} catch (SocketException e) {
 		}
+		stopSpeakers();
 	}
 
 	/**

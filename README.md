@@ -1,4 +1,4 @@
-#Jangle
+# Jangle
 Jangle is a chat and voice communication program build for the Iowa State Universtiy course Computer Scient 309.
 
 
